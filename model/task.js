@@ -2,20 +2,22 @@ import mongoose from 'mongoose';
 
 
 const sechema= new mongoose.Schema({
-    name:{
+    title:{
         type:String,
         required:true,
-        unique:true,  
       },
-    email:{
+   descreption:{
       type:String,
       required:true,
-      unique:true,  
     },
-    password:{
-        type:String,
-        required:true,
-        select:false,
+   isCompeleted:{
+        type:Boolean,
+       default:false,
+    },
+    user:{
+type:mongoose.Schema.Types.ObjectId,
+ref:"User",
+required:true
     },
     createdAt:{
 type:Date,
@@ -23,4 +25,4 @@ default:Date.now
     }
 })
 
-export const User=mongoose.model("User",sechema)
+export const Task=mongoose.model("Task",sechema)
